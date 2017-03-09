@@ -9,7 +9,7 @@ class UserFlowTest < ActionDispatch::IntegrationTest
   end
 
   test 'cannot see the link to Google login if logged in' do
-    sign_in User.create(name: 'John Doe', provider: 'google_oauth2', uid: '123')
+    sign_in create(:user)
     get '/'
     assert_select 'a', href: '/users/auth/google_oauth2', count: 0
   end
