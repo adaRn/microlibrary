@@ -19,4 +19,9 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     get '/'
     assert_select 'a[href=?]', '/sign_out', count: 1
   end
+
+  test 'cannot see a logout link if not signed in' do
+    get '/'
+    assert_select 'a[href=?]', '/sign_out', count: 0
+  end
 end
