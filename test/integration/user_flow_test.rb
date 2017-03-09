@@ -17,6 +17,6 @@ class UserFlowTest < ActionDispatch::IntegrationTest
   test 'can see one logout link if signed in' do
     sign_in create(:user)
     get '/'
-    assert_select 'a[href=?]', 'sign_out', count: 1
+    assert_select 'a[href=?]', '/sign_out', count: 1
   end
 end

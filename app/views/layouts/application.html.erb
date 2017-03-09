@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to('Logout', destroy_user_session_path) %>
+    </header>
     <%= yield %>
   </body>
 </html>
