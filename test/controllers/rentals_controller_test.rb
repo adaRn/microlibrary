@@ -19,7 +19,7 @@ class RentalsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should rent a book' do
     assert_difference 'Rental.count', +1 do
-      get rentals_create_url(books(:one).id)
+      get rental_create_url(books(:one).id)
     end
     assert_redirected_to books_url
   end

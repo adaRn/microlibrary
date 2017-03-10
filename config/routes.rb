@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :books
   scope '/rentals' do
     get '/', to: 'rentals#index', as: 'rentals'
-    get '/create/:id', to: 'rentals#create', as: 'rentals_create'
+    get '/create/:id', to: 'rentals#create', as: 'rental_create'
   end
   resources :users
   devise_for :users,
