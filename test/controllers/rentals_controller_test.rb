@@ -19,14 +19,14 @@ class RentalsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should rent a book' do
     assert_difference 'Rental.count' do
-      get rental_create_url(books(:never_rented).id)
+      post rental_create_url(books(:never_rented).id)
     end
     assert_redirected_to books_url
   end
 
   test 'should return a book' do
     @rental = rentals(:started)
-    get rental_finish_url(@rental.id)
+    post rental_finish_url(@rental.id)
     @rental.reload
     assert_equal Date.today, @rental.finish_date
   end

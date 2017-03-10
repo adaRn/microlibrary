@@ -23,7 +23,7 @@
         <td><%= book.isbn %></td>
         <td><%= book.rented? ? 'Unavailable' : 'Available' %></td>
         <td><%= link_to 'Show', book %></td>
-        <td><%= book.rented? ? link_to('Return', rental_finish_path(book.rentals.last)) : (link_to 'Rent', rental_create_path(book)) %></td>
+        <td><%= book.rented? ? button_to('Return', rental_finish_path(book.rentals.last)) : (button_to 'Rent', rental_create_path(book)) %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
