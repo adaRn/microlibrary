@@ -1,4 +1,4 @@
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
       <th>Book</th>
@@ -16,7 +16,7 @@
         <td><%= link_to rental.book.title, rental.book %></td>
         <td><%= link_to rental.user.name, rental.user %></td>
         <td><%= rental.start_date %></td>
-        <td><%= rental.finished? ? rental.finish_date : button_to('Return', rental_finish_path(rental))%></td>
+        <td><%= policy(rental).finish?  ?  button_to('Return', rental_finish_path(rental)) : rental.finish_date %></td>
         <td><%= rental.due_date %></td>
       </tr>
     <% end %>
