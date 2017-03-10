@@ -32,11 +32,8 @@
         <td><%= book.author %></td>
         <td><%= book.isbn %></td>
         <td>
-          <% if book.rented? %>
-            <%= policy(book.rentals.last).finish? ? button_to('Return', rental_finish_path(book.rentals.last)) : "Rented until #{book.rentals.last.due_date}" %></td>
-          <% else %>
-            <%= policy(book).rent? ? (button_to 'Rent', rental_create_path(book)) : 'Cannot rent' %>
-          <% end %>
+          <%= book_action_button(book) %>
+        </td>
       </tr>
     <% end %>
   </tbody>

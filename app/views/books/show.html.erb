@@ -1,6 +1,9 @@
 <div class="container">
-  <h1><%= @book.title %></h2>
-  <%= book_cover_image @book %>
+  <div class="row">
+    <h1><%= @book.title %></h2>
+    <div class="col-sm-2">
+      <%= book_cover_image @book %>
+    </div>
 
 <p>
   <strong>Author:</strong>
@@ -13,8 +16,18 @@
 </p>
 <p>
   Rented <strong><%= @book.rentals.count %></strong> times.
-
 </p>
+
+<p>
+  <%= book_action_button(@book) %>
+</p>
+
+
+</div>
+<h3>History</h3>
+<%= render 'shared/rentals_table' %>
+
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Delete from the library', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
