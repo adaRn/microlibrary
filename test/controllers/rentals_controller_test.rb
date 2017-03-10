@@ -8,7 +8,7 @@ class RentalsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = create(:user)
+    @user = users(:one)
     sign_in @user
   end
 
@@ -29,5 +29,20 @@ class RentalsControllerTest < ActionDispatch::IntegrationTest
     post rental_finish_url(@rental.id)
     @rental.reload
     assert_equal Date.today, @rental.finish_date
+  end
+
+  test 'should not rent a book if it is already rented' do
+    assert_raises(Pundit::NotAuthorizedError) do
+      post rental_create_url(books(:rented).id)
+    end
+  end
+
+  test 'should not return a book if the user is not the one who rented it' do
+    sign_out @user
+    sign_in users(:two)
+    @rental = rentals(:started)
+    assert_raises(Pundit::NotAuthorizedError) do
+      post rental_finish_url(@rental.id)
+    end
   end
 end
