@@ -14,10 +14,10 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', '/users/auth/google_oauth2', count: 0
   end
 
-  test 'can see one logout link if signed in' do
+  test 'can see two logouts link if signed in on the home page' do
     sign_in create(:user)
     get '/'
-    assert_select 'a[href=?]', '/sign_out', count: 1
+    assert_select 'a[href=?]', '/sign_out', count: 2
   end
 
   test 'cannot see a logout link if not signed in' do
