@@ -41,6 +41,15 @@
   </div><!-- /.container-fluid -->
 </nav>
     </header>
+
+    <div id="flash_messages">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-success" role="alert">
+      <%= content_tag(:div, value, :class => "flash #{key}") %>
+    </div>
+    <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
