@@ -1,7 +1,6 @@
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<div class="container">
+  <h1><%= @book.title %></h2>
+  <%= book_cover_image @book %>
 
 <p>
   <strong>Author:</strong>
@@ -9,9 +8,15 @@
 </p>
 
 <p>
-  <strong>Isbn:</strong>
+  <strong>ISBN:</strong>
   <%= @book.isbn %>
+</p>
+<p>
+  Rented <strong><%= @book.rentals.count %></strong> times.
+
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Delete from the library', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', books_path %>
+</div>

@@ -20,7 +20,7 @@
       <th>Title</th>
       <th>Author</th>
       <th>ISBN</th>
-      <th colspan="4"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -37,8 +37,6 @@
           <% else %>
             <%= policy(book).rent? ? (button_to 'Rent', rental_create_path(book)) : 'Cannot rent' %>
           <% end %>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
