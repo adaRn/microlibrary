@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h1>
+  <%= @user.name %>
+</h1>
+<%= link_to 'Edit details', edit_user_path(@user) %>
+<h2>
+  Book rentals history
+</h2>
+
+<%= render "shared/rentals_table" %>
