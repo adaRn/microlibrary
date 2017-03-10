@@ -1,11 +1,12 @@
-
+<div class="container">
 
 <h1>
   <%= @user.name %>
 </h1>
-<%= link_to 'Edit details', edit_user_path(@user) %>
+<%= link_to 'Edit details', edit_user_path(@user) if policy(@user).edit? %>
 <h2>
   Book rentals history
 </h2>
 
 <%= render "shared/rentals_table" %>
+</div>
