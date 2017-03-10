@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+started:
   user: one
-  book: one
+  book: rented
   start_date: 2017-03-08
   due_date: 2017-03-18
 
 finished:
   user: two
-  book: two
+  book: returned
   start_date: 2017-03-08
   finish_date: 2017-03-10
   due_date: 2017-03-18

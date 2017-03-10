@@ -5,7 +5,17 @@ one:
   author: MyText
   isbn: MyString
 
-two:
+rented:
+  title: MyText
+  author: MyText
+  isbn: MyString
+
+returned:
+  title: MyText2
+  author: MyText2
+  isbn: MyString2
+
+never_rented:
   title: MyText
   author: MyText
   isbn: MyString
