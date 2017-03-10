@@ -21,6 +21,9 @@ class RentalsControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Rental.count' do
       post rental_create_url(books(:never_rented).id)
     end
+    assert_difference 'Rental.count' do
+      post rental_create_url(books(:returned).id)
+    end
     assert_redirected_to books_url
   end
 
