@@ -1,29 +1,26 @@
 class RentalsController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
-    # GET /books
-    # GET /books.json
+    # GET /rentals
     def index
       @rentals = Rental.all
     end
 
-    # GET /books/1
-    # GET /books/1.json
-    def show
-    end
-
-    # GET /books/new
-    def new
-      @rental = Rental.new
-    end
-
-    # GET /books/1/edit
-    def edit
-    end
-
-    # POST /books
-    # POST /books.json
+    # GET /rentals/create
     def create
+      @rental = Rental.create(book: Book.find(params[:id]), user: current_user)
+
+      respond_to do |format|
+        if @rental.save
+          format.html { redirect_to books_url, notice: 'Book was successfully rented.' }
+        else
+          format.html { redirect_to books_url, notice: 'Could not rent a book' }
+        end
+      end
+    end
+
+    # GET /rentals/create
+    def finish
       @book = Book.new(book_params)
 
       respond_to do |format|
@@ -37,38 +34,14 @@ class RentalsController < ApplicationController
       end
     end
 
-    # PATCH/PUT /books/1
-    # PATCH/PUT /books/1.json
-    def update
-      respond_to do |format|
-        if @book.update(book_params)
-          format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-          format.json { render :show, status: :ok, location: @book }
-        else
-          format.html { render :edit }
-          format.json { render json: @book.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    # DELETE /books/1
-    # DELETE /books/1.json
-    def destroy
-      @book.destroy
-      respond_to do |format|
-        format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_book
-        @book = Book.find(params[:id])
+      def set_rental
+        @rental = Rental.find(params[:id])
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.
-      def book_params
+      def rental_params
         params.require(:book).permit(:title, :author, :isbn)
       end
 

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   resources :books
-  resources :rentals
+  scope '/rentals' do
+    get '/', to: 'rentals#index', as: 'rentals'
+    get '/create/:id', to: 'rentals#create', as: 'rentals_create'
+  end
   resources :users
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

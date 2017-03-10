@@ -8,6 +8,7 @@
       <th>Book</th>
       <th>User</th>
       <th>Start</th>
+      <th>Finish</th>
       <th>Due</th>
       <th colspan="3"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= rental.book.title %></td>
         <td><%= rental.user.name %></td>
         <td><%= rental.start_date %></td>
+        <td><%= rental.finish_date %></td>
         <td><%= rental.due_date %></td>
       </tr>
     <% end %>
@@ -26,5 +28,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
