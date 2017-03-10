@@ -57,3 +57,4 @@ gem 'devise'
 gem "omniauth-google-oauth2"
 gem "figaro"
 gem "pundit"
+gem "bootstrap-sass"
