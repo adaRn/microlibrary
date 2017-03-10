@@ -24,4 +24,9 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     get '/'
     assert_select 'a[href=?]', '/sign_out', count: 0
   end
+
+  test 'cannot see books if not logged in' do
+    get '/books'
+    assert_redirected_to '/sign_in'
+  end
 end

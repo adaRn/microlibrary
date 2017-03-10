@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
+  # Although it's a test of controller, it inherits after
+  # ActionDispatch::IntegrationTest, so it has to get Integration test helpers
+  # from Devise, not Controller test helpers.
+  # See https://github.com/plataformatec/devise/issues/4191
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @book = books(:one)
+    sign_in create(:user)
   end
 
   test "should get index" do
