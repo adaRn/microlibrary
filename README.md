@@ -2,3 +2,5 @@
 
 # μlibrary
 It is a simple Rails app to manage books, perhaps in a small firm's library.
+
+Running sample: http://microlibrary-rails.herokuapp.com/
