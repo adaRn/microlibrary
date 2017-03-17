@@ -6,9 +6,8 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
   def self.from_omniauth(access_token)
-    user = User.where(uid: access_token['uid'],
-                      provider: access_token['provider'])
-               .first
+    user = User.find_by(uid: access_token['uid'],
+                        provider: access_token['provider'])
 
     unless user
       user = User.create!(name: access_token.info['name'],
